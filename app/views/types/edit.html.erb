@@ -1,0 +1,29 @@
+<%= link_to("<< Back to List", {action: 'list'}, :class => 'back-link') %>
+
+<div class="type edit">
+  <h2>Edit Type</h2>
+
+  <%= form_for(:type, :url => {:action => 'update', id: @type.id}) do |f| %>
+
+    <table summary="Type form fields">
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name) %></td>
+      </tr>
+      <tr>
+        <th>Image</th>
+        <td>
+          <%= f.fields_for :image do |i| %>
+            <%= i.file_field(:image) %>
+          <% end %>
+        </td>
+      </tr>
+   </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Submit Changes") %>
+    </div>
+
+  <% end %>
+</div>
+

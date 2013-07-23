@@ -1,0 +1,53 @@
+<div class="product show" style="position:relative;">
+  <div id="directory" style="position:absolute;top:-17px;font-size:12px;">
+    <%= link_to "Galleries", {controller: 'galleries', action: 'index'}, style: 'text-decoration:none;color:grey;' %> /
+    <%= link_to @product.category.type.name, {controller: 'types', action: 'show', id: @product.category.type.id }, style: 'text-decoration:none;color:grey;' %> /
+    <%= link_to @product.category.name, {controller: 'categories', action: 'show', id: @product.category.id }, style: 'text-decoration:none;color:grey;' %>
+
+  </div>
+  <div id="left-content" style="width:200px; float:left; height:100%;">
+    <div id="left-content-wrapper" style="height:inherit;width:190px;float:left;">
+      <div id="name">
+        <%= @product.name %>
+      </div>
+
+      <div id="description">
+        <%= @product.description %>
+      </div>
+
+      <div id="SKU">
+        <%= @product.identifier %>
+      </div>
+
+      <div id="dimensions">
+        <%= @product.dimensions %>
+      </div>
+      <div id="links">
+
+      </div>
+      <div id="alt-images">
+
+
+      </div>
+      <div>
+        Additional photos are available upon request
+      </div>
+    </div>
+  </div>
+
+  <div id="right-content" style="float:left;width:600px;">
+    <div id="product-nav" style="font-size: 14px;">
+      <div id="prev-link" style="display:inline-block;float:left;">
+        <%= link_to("Previous Item", {controller: 'product', action: 'show', id: @product.prev_item_id}, style: 'text-decoration:none;') %>
+      </div>
+      <div id="next-link" style="display:inline-block;float:right;">
+        <%= link_to("Next Item", {controller: 'product', action: 'show', id: @product.next_item_id}, style: 'text-decoration:none;' )%>
+      </div>
+    </div>
+    <div id="product-image">
+      <%= image_tag @product.default_image_url %>
+    </div>
+  </div>
+</div>
+
+

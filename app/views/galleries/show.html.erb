@@ -1,0 +1,26 @@
+<div id="nav-link" style="position:relative;font-size:14px;">
+  <%= link_to "Galleries", {controller: 'galleries', action: 'index'}, style: 'position:absolute;top:-18px;color:grey;' %>
+</div>
+
+<div id="title" >
+<h2 style="margin:0 auto;width:100px;height:50px;"><%= @type.name %></h2>
+</div>
+<% base = 195 %>
+<div id="category-grid" style="width:<%= (base*4).to_s %>px;margin:0 auto;">
+<% @type.categories.each do |category| %>
+
+  <div style="width:<%= (base).to_s %>px;height:134px;float:left;">
+
+    <div id="<%= category.name %>-category" style="width:<%= Paperclip::Geometry.from_file(category.image.image).width.to_i.to_s if category.image %>px;margin:0 auto;">
+      <%= link_to( "#{image_tag category.image.image.url(:small)}".html_safe, {controller: 'categories', action: 'show', id: category.id}) if category.image %>
+    </div>
+    <div id="<%= category.name %>-category-name" class="category-name grid-name">
+      <span class="category-name-span grid-name-span"><%= category.name %></span>
+    </div>
+
+  </div>
+
+<% end %>
+
+</div>
+

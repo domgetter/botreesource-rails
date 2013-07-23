@@ -1,0 +1,52 @@
+<%= link_to("<< Back to List", {action: 'list'}, :class => 'back-link') %>
+
+<div class="product new">
+  <h2>Create Product</h2>
+
+  <%= form_for(:product, :url => {:action => 'create'}, html: {multipart: true}) do |f| %>
+
+    <table summary="Product form fields">
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name) %></td>
+      </tr>
+      <tr>
+        <th>Identifier</th>
+        <td><%= f.text_field(:identifier) %></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td><%= f.text_field(:description) %></td>
+      </tr>
+      <tr>
+        <th>Length</th>
+        <td><%= f.text_field(:length) %></td>
+      </tr>
+      <tr>
+        <th>Width</th>
+        <td><%= f.text_field(:width) %></td>
+      </tr>
+      <tr>
+        <th>Height</th>
+        <td><%= f.text_field(:height) %></td>
+      </tr>
+      <tr>
+        <th>Position</th>
+        <td><%= f.text_field(:position) %></td>
+      </tr>
+      <tr>
+        <th>Images</th>
+        <%= f.fields_for :images do |i| %>
+          <td><%= i.file_field(:image) %></td>
+        <% end %>
+      </tr>
+
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Add Product") %>
+    </div>
+
+  <% end %>
+</div>
+

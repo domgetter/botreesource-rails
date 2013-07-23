@@ -1,0 +1,43 @@
+<div class="product list">
+  <h2>Products</h2>
+
+  <table class="listing" summary="Product list">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Product</th>
+      <th>Identifier</th>
+      <th>Description</th>
+      <th>Dimensions</th>
+      <th>Category</th>
+      <th>Position</th>
+      <th>Status</th>
+      <th>Images</th>
+      <th>Actions</th>
+    </tr>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= product.id %></td>
+      <td><%= link_to( product.name, {action: 'show', id: product.id}) %></td>
+      <td><%= product.identifier %></td>
+      <td><%= product.description %></td>
+      <td><%= product.length + "\"x" + product.width + "\"x" + product.height + "\"" %></td>
+      <td><%= product.category_id %></td>
+      <td><%= product.position %></td>
+      <td><%= product.status %></td>
+      <td><% product.images.each do |image| %>
+        <%= image_tag image.image.url(:thumb) %>
+      <% end %></td>
+      <td>
+        <%= link_to("Show", {:action => "show", :id => product.id}, :class => 'action show')  %>
+        <%= link_to("Edit", {action: 'edit', id: product.id}, :class => 'action edit') %>
+        <% if product.status.eql? "deleted" %>
+          <%= link_to("Recover", {action: 'recover', id: product.id}, :class => 'action recover')  %>
+        <% else %>
+          <%= link_to("Delete", {action: 'delete', id: product.id}, :class => 'action delete')  %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+

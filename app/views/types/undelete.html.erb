@@ -1,0 +1,19 @@
+<%= link_to("<< Back to list", {action: 'list'}, class: 'back-link') %>
+
+  <div class="type undelete">
+    <h1>Recover Type</h1>
+
+  <%= form_for(:type, url: {action: 'undestroy', id: @type.id}) do |f| %>
+
+    <p>Are you sure you want to recover this Gallery?</p>
+
+    <p class="reference-name"><%= @type.name %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Recover Gallery") %>
+    </div>
+
+  <% end %>
+
+  </div>
+

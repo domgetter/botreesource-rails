@@ -1,0 +1,48 @@
+<style type="text/css">
+
+tr.status-deleted{
+color:#D22;
+background-color:#FBB;
+}
+
+</style>
+
+<div class="type list">
+  <h2>Types</h2>
+
+  <%= link_to("Create New Type", {action: 'new'}) %>
+
+  <table class="listing" summary="type list">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Type</th>
+      <th>Image</th>
+      <th>Position</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    <% @types.each do |type| %>
+    <tr class="status-<%= type.status %>">
+      <td><%= type.id %></td>
+      <td><%= link_to( type.name, {:action => "show", :id => type.id }) %></td>
+      <td>
+        <% if type.image %>
+          <%= image_tag( type.image.image.url(:thumb)) %>
+        <% end %>
+      </td>
+      <td><%= type.position %></td>
+      <td><%= type.status %></td>
+      <td>
+        <%= link_to("Show", {:action => "show", :id => type.id}, :class => 'action show')  %>
+        <%= link_to("Edit", {action: 'edit', id: type.id }, :class => 'action edit') %>
+        <% if type.status.eql? "deleted" %>
+          <%= link_to("Recover", {action: 'undelete', id: type.id }, :class => 'action undelete')  %>
+        <% else %>
+          <%= link_to("Delete", {action: 'delete', id: type.id }, :class => 'action delete')  %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+

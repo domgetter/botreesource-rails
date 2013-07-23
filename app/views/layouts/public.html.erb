@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bo Tree Source - Los Angeles Wholesale Imported Natural Modern Wood Furniture &amp; Ceramics</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript" src="/javascripts/public/nav-bar.js"></script>
+
+  <style type="text/css">
+
+    body{
+      font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    }
+    div#main{
+      margin-top: 18px;
+    }
+    div#content{
+      
+
+    }
+    div#left-content{
+      float: left;
+      width: 331px;
+    }
+    div#right-content{
+      float: left;
+      width: 469px;
+    }
+    div#site-wrapper{
+      width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    div#header-top{
+      background-image:url(/img/header-bg.jpg);
+      height: 88px;
+    }
+    div#navigation{
+      background-image:url(/img/nav-bg.jpg);
+      height: 24px;
+    }
+    .home-index-link{
+      width: 95px;
+      height: inherit;
+    }
+    div#company-info{
+      color: #FFF;
+      font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+      font-size: 12px;
+      line-height: 14px;
+      padding: 14px 0px;
+      position: relative;
+      top: -87px;
+      left: 94px; 
+    }
+    div#comany-info a{
+      
+    }
+    .small{
+      font-size: 12px;
+    }
+    .bold{
+      font-weight:bold;
+    }
+    a.visited{
+      color:#800;
+    }
+    a{
+      color:#800;
+    }
+    ul#nav-list{
+      position:relative;
+      width:800px;
+      margin-left:-40px;
+      margin-top:-18px;
+      //height:inherit;
+      //list-style-type:none;
+    }
+    ul#nav-list a{
+      display:inline;
+      line-height:24px;
+      width: 89px;
+      float:left;
+      padding-left: 10px;
+      font-size: 12px;
+      font-family:Geneva,Arial,Helvetica,sans-serif;
+	      //border:solid blue 1px;
+    }
+    ul#nav-list a{
+      text-decoration:none;
+      color:#000;
+      width:89px;
+      height:inherit;
+    }
+    div#footer{
+      clear:both;
+      background-color:#E3CDA6;
+      width:auto;
+      height:20px;
+      font-size:10px;
+      //margin-top: 10px;
+      //position:relative;
+      //top: 10px;
+    }
+    span.footer-span{
+      float: right;
+      line-height: 20px;
+      margin-right: 6px;
+      font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    }
+    div.grid-name{
+      font-size: 12px;
+      width:100%;
+      text-align:center;
+    }
+    span.grid-name-span{
+      display:inline-block;
+    }
+
+  </style>
+
+</head>
+  <body>
+    <div id="site-wrapper">
+      <div id="header">
+        <div id="header-top">
+	  <div class="home-index-link" >
+            <%= link_to( '/', class: 'home-index-link' ) do %>
+              <div class="home-index-link"></div>
+            <% end %>
+          </div>
+          <div id="company-info">
+            3810 Pasadena Ave.<br />
+            Los Angeles, CA 90031<br />
+            (323) 441-8950<br />
+            <%= mail_to('info@botreesource.com', 'info@botreesource.com',class: 'link', style: "color:rgb(221, 197, 153);") %>
+          </div>
+        </div>
+        <div id="navigation">
+         <ul id="nav-list">
+            <%= link_to("Home", {controller: 'public', action: 'index'}, class: 'nav-link') %>
+            <%= link_to("Galleries", {controller: 'galleries', action: 'index'}, class: 'nav-link') %>
+            <%= link_to("About Us", {controller: 'public', action: 'about'}, class: 'nav-link') %>
+            <%= link_to("Contact", {controller: 'public', action: 'contact'}, class: 'nav-link') %>
+            <%= link_to("Featured", {controller: 'public', action: 'featured'}, class: 'nav-link') %>
+          </ul> 
+        </div>
+      </div>
+      <div id="main">
+        <div id="content">
+          <%= yield %>
+        </div>
+        <div class="clear" style="height:15px;clear:both;">
+
+        </div>
+      </div>
+     
+      <div id="footer">
+        <span class='footer-span'>
+          All rights reserved © 2013 Bo Tree Source
+        </span>
+      </div>
+    </div>
+  </body>
+</html>
+

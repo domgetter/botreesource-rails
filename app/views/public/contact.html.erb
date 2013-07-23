@@ -1,0 +1,75 @@
+<style>
+
+td{
+  font-size: 12px;
+}
+input{
+  width: 120px;
+}
+table#email-add-form > tr > td:first-child{
+  width: 20px;
+}
+iframe{
+  border: solid 1px black;
+}
+</style>
+
+<div id="left-content" style="width:190px;float:left;margin-top:-23px;">
+<h4 style="position:relative;top:8px;">Contact</h4>
+<p class="small">Bo Tree<br />
+3810 Pasadena Ave.<br />
+Los Angeles, CA 90031</p>
+<table>
+  <tr>
+    <td>Phone:</td>
+    <td>323.441.8950</td>
+  </tr>
+  <tr>
+    <td>Fax:</td>
+    <td>323.441.8765</td>
+  </tr>
+
+  <tr>
+    <td>Hours:</td>
+    <td>9:00AM - 5:00PM</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td>Mon. - Fri.</td>
+  </tr>
+</table>
+<h4 style="margin-top:2px;margin-bottom:-5px;">Email</h4>
+<%= mail_to('info@botreesource.com', 'info@botreesource.com', class: 'small', style: 'margin-top:0px;') %>
+
+<p class="small">To receive information on new shipments and sale items<br />
+<span class="bold small">Join Bo Tree's Email List</span>
+
+<%= form_for(:email_list, :url => {:action => 'add_email'}, class: 'small') do |f| %>
+
+  <table summary="Email-list form fields" id="email-add-form">
+    <tr>
+      <th>First Name</th>
+      <td><%= f.text_field(:first_name) %></td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td><%= f.text_field(:last_name) %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= f.text_field(:email) %></td>
+    </tr>
+  </table>
+
+  <div class='form-buttons'>
+    <%= submit_tag("Add Email Address", style: 'width:100%;margin-top:6px;') %>
+  </div>
+
+  <% end %>
+
+</div>
+
+<div id="right-content" style="float:left;margin-left:14px;">
+<iframe width="594" height="432" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=3810+Pasadena+Ave.+Los+Angeles,+CA+90031&amp;aq=&amp;sll=36.677726,-95.951278&amp;sspn=0.400353,0.572662&amp;ie=UTF8&amp;hq=&amp;hnear=3810+Pasadena+Ave,+Los+Angeles,+California+90031&amp;t=m&amp;z=14&amp;ll=34.090475,-118.210724&amp;output=embed"></iframe>
+</div>

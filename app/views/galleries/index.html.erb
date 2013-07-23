@@ -1,0 +1,39 @@
+
+
+<div id="nav-link" style="position:relative;font-size:14px;">
+  <%= link_to "Galleries", {controller: 'galleries', action: 'index'}, style: 'position:absolute;top:-18px;color:grey;' %>
+</div>
+
+<div id="title" >
+<h2 style="margin:0 auto;width:100px;height:50px;">Galleries</h2>
+</div>
+<% grid_width = 195; grid_height=150 %>
+<div id="gallery-grid" style="width:<%= (grid_width*4).to_s %>px;margin:0 auto;">
+
+  <div style="width:<%= grid_width.to_s %>px;height:<%= grid_height.to_s %>px;float:left;">
+
+    <div id="new-gallery" style="width:160px;margin:0 auto;">
+      <%= link_to("#{image_tag("/images/DB6269-160.jpg")}".html_safe, {controller: 'galleries', action: 'new'}) %>
+    </div>
+    <div id="new-gallery-name" class="gallery-name grid-name">
+      <span class="gallery-name-span grid-name-span">New Shipment</span>
+    </div>
+
+  </div>
+
+<% @types.each do |type| %>
+
+  <div style="width:<%= (grid_width).to_s %>px;height:<%= grid_height.to_s %>px;float:left;">
+  
+    <div id="<%= type.name %>-gallery-name" style="width:<%= Paperclip::Geometry.from_file(type.image.image).width.to_i.to_s %>px;margin:0 auto;">
+      <%= link_to( "#{image_tag type.image.image.url(:small)}".html_safe, {controller: 'galleries', action: 'show', id: type.id}) %>
+    </div>
+    <div id="<%= type.name %>gallery-name" class="gallery-name grid-name">
+      <span class="gallery-name-span grid-name-span"><%= type.name %></span>
+    </div>
+  
+  </div>
+
+<% end %>
+
+</div>

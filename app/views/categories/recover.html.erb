@@ -1,0 +1,19 @@
+<%= link_to("<< Back to list", {action: 'list'}, class: 'back-link') %>
+
+  <div class="category recover">
+    <h1>Recover Category</h1>
+
+  <%= form_for(:category, url: {action: 'restore', id: @category.id}) do |f| %>
+
+    <p>Are you sure you want to recover this Category?</p>
+
+    <p class="reference-name"><%= @category.name %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Recover Category") %>
+    </div>
+
+  <% end %>
+
+  </div>
+

@@ -1,0 +1,26 @@
+<div class="gallery show">
+  <h2><%= @type.name %></h2>
+
+  <div id="add-new"><%= link_to "Create new category for #{@type.name}>>", {controller: 'categories', action: 'new', type_id: @type.id } %></div>
+  <table class="listing" summary="category list">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Category</th>
+      <th>Position</th>
+      <th>Actions</th>
+    </tr>
+    <% @categories.each do |cat| %>
+    <tr>
+      <td><%= cat.id %></td>
+      <td><%= link_to( cat.name, {:controller => "categories", :action => "show", :id => cat.id }) %></td>
+      <td><%= cat.position %></td>
+      <td>
+        <%= link_to("Show", {:controller => "category", :action => "show", :id => cat.id}, :class => 'action show')  %>
+        <%= link_to("Edit", '#', :class => 'action edit') %>
+        <%= link_to("Delete", '#', :class => 'action delete')  %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+

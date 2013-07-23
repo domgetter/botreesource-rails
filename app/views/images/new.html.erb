@@ -1,0 +1,9 @@
+<%= form_for(:image, url: {action: 'create'}) do |f| %>
+
+  <%= f.file_field(:image) %>
+ 
+  <%= submit_tag("Add Image") %>
+
+<% end %>
+
+

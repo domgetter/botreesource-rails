@@ -1,0 +1,49 @@
+<%= link_to("<< Back to List", {action: 'list'}, :class => 'back-link') %>
+
+<div class="product edit">
+  <h2>Edit Product</h2>
+
+  <%= form_for(:product, :url => {:action => 'update', id: @product.id}) do |f| %>
+
+    <table summary="Product form fields">
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name) %></td>
+      </tr>
+      <tr>
+        <th>Identifier</th>
+        <td><%= f.text_field(:identifier) %></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td><%= f.text_field(:description) %></td>
+      </tr>
+      <tr>
+        <th>Length</th>
+        <td><%= f.text_field(:length) %></td>
+      </tr>
+      <tr>
+        <th>Width</th>
+        <td><%= f.text_field(:width) %></td>
+      </tr>
+      <tr>
+        <th>Height</th>
+        <td><%= f.text_field(:height) %></td>
+      </tr>
+      <tr>
+        <th>Category</th>
+        <td><%= f.select(:category_id, options_for_select(Category.all.collect {|c| [c.name, c.id]}, @product.category_id)) %></td>
+      </tr>
+      <tr>
+        <th>Position</th>
+        <td><%= f.text_field(:position) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Submit Changes") %>
+    </div>
+
+  <% end %>
+</div>
+

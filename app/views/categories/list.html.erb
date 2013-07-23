@@ -1,0 +1,50 @@
+<style category="text/css">
+
+tr.status-deleted{
+color:#D22;
+background-color:#FBB;
+}
+
+</style>
+
+<div class="category list">
+  <h2>Categories</h2>
+
+  <%= link_to("Create New category", {action: 'new'}) %>
+
+  <table class="listing" summary="category list">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Category</th>
+      <th>Parent Type</th>
+      <th>Image</th>
+      <th>Position</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    <% @categories.each do |category| %>
+    <tr class="status-<%= category.status %>">
+      <td><%= category.id %></td>
+      <td><%= link_to( category.name, {:action => "show", :id => category.id }) %></td>
+      <td><%= link_to( category.type.name, {controller: 'types', :action => "show", :id => category.type.id }) if category.type %></td>
+      <td>
+        <% if category.image %>
+          <%= image_tag category.image.image.url(:thumb) %>
+        <% end %>
+      </td>
+
+      <td><%= category.position %></td>
+      <td><%= category.status %></td>
+      <td>
+        <%= link_to("Show", {:action => "show", :id => category.id}, :class => 'action show')  %>
+        <%= link_to("Edit", {action: 'edit', id: category.id }, :class => 'action edit') %>
+        <% if category.status.eql? "deleted" %>
+          <%= link_to("Recover", {action: 'recover', id: category.id }, :class => 'action recover')  %>
+        <% else %>
+          <%= link_to("Delete", {action: 'delete', id: category.id }, :class => 'action delete')  %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

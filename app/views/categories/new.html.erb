@@ -1,0 +1,35 @@
+<%= link_to("<< Back to List", {action: 'list'}, :class => 'back-link') %>
+
+<div class="category new">
+  <h2>Create Category</h2>
+
+  <%= form_for(:category, :url => {:action => 'create'}) do |f| %>
+
+    <table summary="Category form fields">
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name) %></td>
+      </tr>
+      <tr>
+        <th>Type</th>
+        <td>
+          <%= f.select(:type_id, options_for_select(Type.all.collect{|c| [c.name,c.id]}, params[:type_id] || @category.type_id)) %>
+        </td>
+      </tr>
+      <tr>
+        <th>Image</th>
+        <td>
+          <%= f.fields_for(:image) do |i| %>
+            <%= i.file_field(:image) %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Add Category") %>
+    </div>
+
+  <% end %>
+</div>
+
